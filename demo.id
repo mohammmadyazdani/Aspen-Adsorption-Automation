@@ -1,0 +1,6 @@
+Hydrogen separation using PSA
+
+This example process simulates hydrogen production from a gas stream comprising 75 mol% hydrogen and 25 mol% of impurities at 15 bar and 21 C. A four bed eight stage Pressure Swing Adsorption (PSA) process is used with a 5A molecular sieve as adsorbent.
+
+To execute this example (after loading), select the dynamic run mode and then execute the dynamic run.
+
