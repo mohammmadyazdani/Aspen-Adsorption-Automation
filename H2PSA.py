@@ -1,7 +1,7 @@
 """
 Author: Mohammad Yazdani
 Email:  mohamad.yazdani7990@gmail.com
-Date:   2025
+Date:   2026
 
 Description:
     This script demonstrates how to control and extract data from Aspen Adsorption
@@ -65,7 +65,15 @@ while True:
         time.sleep(5)
 
 """
-Step 4: Access the main simulation and flowsheet objects
+Step 4: Force the Aspen Adsorption GUI window to appear on screen
+
+When launched programmatically via COM, Aspen may start as a hidden or minimized
+window. Setting ACM.Visible = True forces the application window to surface.
+"""
+ACM.Visible = True
+
+"""
+Step 5: Access the main simulation and flowsheet objects
 
 These objects give control over the units and variables inside Aspen Adsorption.
 """
@@ -73,7 +81,7 @@ Simulation = ACM.Simulation
 Flowsheet = Simulation.Application.Simulation.Flowsheet
 
 """
-Step 5: Set process input variables for the PSA model
+Step 6: Set process input variables for the PSA model
 
 These include feed pressure, bed geometry, and the adsorption/repressurization step time.
 
@@ -107,7 +115,7 @@ Flowsheet.Cycle_Organizer.Cycle_Data[0].Step_Data[1].StepTime.Value = 4.0  # Ste
 print("Input parameters have been set.")
 
 """
-Step 6: Initialize simulation units
+Step 7: Initialize simulation units
 
 This step initializes the adsorption bed and the corresponding gas tank voids
 before running the full cyclic simulation.
@@ -129,7 +137,7 @@ Flowsheet.TD2.Initialize_Unit
 print("Bed and gas tank voids initialized successfully.")
 
 """
-Step 7: Run the simulation
+Step 8: Run the simulation
 
 Aspen Adsorption includes several run modes, but in this example
 we only use two:
@@ -143,7 +151,7 @@ Simulation.Run(True)
 print("Simulation run completed.")
 
 """
-Step 8: Accessing simulation results
+Step 9: Accessing simulation results
 
 You can extract performance and operating data directly from Aspen Adsorption using Python.
 Results can be accessed from both Streams and Blocks as follows:
@@ -158,7 +166,7 @@ Examples in Python:
 """
 
 """
-Step 9: Extract key performance results
+Step 10: Extract key performance results
 
 Here we extract and print hydrogen purity and recovery.
 """
@@ -172,7 +180,7 @@ print(f"H2 Purity: {purity:.2f}%")
 print(f"H2 Recovery: {recovery:.2f}%")
 
 """
-Step 10: Close Aspen Adsorption
+Step 11: Close Aspen Adsorption
 
 This terminates the Aspen Custom Modeler session safely after results are extracted.
 """
